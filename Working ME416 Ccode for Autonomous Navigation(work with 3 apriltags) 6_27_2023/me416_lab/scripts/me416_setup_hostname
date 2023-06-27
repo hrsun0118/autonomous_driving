@@ -1,0 +1,22 @@
+#!/bin/bash
+# Script to change the robot name which affects the hostname and dweet page
+#Choose a robot name (hostname, nomohead/dweet account)
+echo "Give your robot a name (this will be used as the hostname and the dweet page)"
+read -p "Name: " robotname
+
+# Change dweet, hostname, and local hotspot
+if [ -n "$robotname" ]
+then
+        echo "Updating dweet, hostname, and local hotspot..."
+        # Update to dweet.io is based on hostname 
+        # Update hostname
+        sudo sed -i "/127.0.1.1/c\127.0.1.1 $robotname" /etc/hosts
+        echo "$robotname" | sudo tee /etc/hostname > /dev/null
+        # Update local hotspot name
+        sudo nmcli c mod my-hotspot 802-11-wireless.ssid "$robotname-hotspot"
+	echo "Find your bot's ip address on the BU network at http://dweet.io/follow/$robotname."
+else
+        echo "Not updating dweet, hostname, and local hotspot..."
+fi
+
+echo ""

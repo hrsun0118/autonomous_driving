@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<?ignore
+	Stream camera and output it into a screen for visualization
+?>
+
+<launch>
+  <include file="$(find me416_lab)/launch/camera_no_visualization.launch"/>
+  <node pkg="image_view" name="raw_image_view" type="image_view" output="screen">
+    <param name="image_transport" value="compressed"/>
+    <remap from="image" to="/raspicam_node/image"/>
+  </node>
+</launch>

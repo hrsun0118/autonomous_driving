@@ -1,0 +1,40 @@
+#!/bin/bash
+# Script to update the BUWIFI credentials
+# Ask for kerberos login (BU login)
+echo "Enter your Kerberos login (IE: bvang@bu.edu, only type in 'bvang')"
+read -p "BU login: " BUlogin
+# Ask for Kerberos password
+COUNTER=3
+until [ $COUNTER -eq 0 ]; do
+        # Ask for password
+        read -sp "Enter Kerberos password: " BUpasswd1
+        echo ""
+        read -sp "Retype Kerberos password: " BUpasswd2
+        echo ""
+        # Check if password is the same, else try again
+        let COUNTER-=1
+        if [ "$BUpasswd1" == "$BUpasswd2" ]
+        then
+                break
+        elif [ $COUNTER -eq 0 ]
+        then
+                BUpasswd1=""
+                BUpasswd2=""
+        else
+                echo "Passwords do not match. Try again"
+        fi
+done
+
+# Update BUWifi login
+if [ -n "$BUlogin" ] && [ -n "$BUpasswd1" ]
+then
+        echo "Updating BUWifi network credentials..."
+        sudo nmcli c mod BU-WIFI 802-1x.identity "$BUlogin"
+        sudo nmcli c mod BU-WIFI 802-1x.password "$BUpasswd1"
+        # Also update git
+        git config --global user.email "$BUlogin@bu.edu"
+        git config --global user.name "$BUlogin"
+else
+        echo "Not updating BUWifi network credentials..."
+fi
+echo ""

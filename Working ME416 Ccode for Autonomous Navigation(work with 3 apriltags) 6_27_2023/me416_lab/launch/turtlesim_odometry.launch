@@ -1,0 +1,9 @@
+<launch>
+    <!-- Turtlesim Node-->
+    <node pkg="turtlesim" type="turtlesim_node" name="sim"/>
+    <node pkg="rosservice" type="rosservice" name="kill" args="call --wait /kill turtle1" />
+    <node pkg="rosservice" type="rosservice" name="spawn_euler" args="call --wait /spawn 5 5 0 turtle_euler" />
+    <node pkg="rosservice" type="rosservice" name="spawn_arcs" args="call --wait /spawn 5 5 0 turtle_arcs" />
+    <node pkg="me416_lab" type="turtlesim_odometry_teleporter.py" name="turtlesim_odometry_teleporter" />
+    <node pkg="me416_lab" type="encoders_publisher.py" name="encoders_publisher" />
+</launch>

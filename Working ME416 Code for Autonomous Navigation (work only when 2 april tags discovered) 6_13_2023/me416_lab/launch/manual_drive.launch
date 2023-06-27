@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<?ignore
+	Script streams camera to a screen and loads the keyboard motor controls
+?>
+
+<launch>
+  <include file="$(find me416_lab)/launch/camera.launch"/>
+  <node pkg="me416_lab" name="motor_command" type="motor_command.py"/>
+  <node pkg="me416_lab" name="key_op" type="key_op.py" output="screen"/>
+</launch>

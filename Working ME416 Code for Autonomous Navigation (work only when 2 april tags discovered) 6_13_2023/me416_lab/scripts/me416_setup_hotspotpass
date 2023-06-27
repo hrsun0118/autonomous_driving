@@ -1,0 +1,36 @@
+#!/bin/bash
+# Script to update the local hotspot credentials
+
+echo "Choose a password for your local hotspot (must be between 8 and 63 characters!)"
+COUNTER=3
+until [ $COUNTER -eq 0 ]; do
+        # Ask for password
+        read -sp "Enter local hotspot password: " hotspotpasswd1
+        echo ""
+        read -sp "Retype local hotspot password: " hotspotpasswd2
+        echo ""
+        # Check if password is the same, else try again
+        let COUNTER-=1
+        if [ "$hotspotpasswd1" == "$hotspotpasswd2" ] && [ ${#hotspotpasswd1} -ge 8 ] && [ ${#hotspotpasswd1} -le 63 ]
+        then
+                break
+        elif [ $COUNTER -eq 0 ]
+        then
+                hotspotpasswd1=""
+                hotspotpasswd2=""
+        else
+                echo "Passwords do not match or not between 8 and 63 characters. Try again"
+        fi
+done
+
+# Update hotspot password
+if [ -n "$hotspotpasswd1" ]
+then
+        echo "Updating local hotspot password..."
+        sudo nmcli c mod my-hotspot 802-11-wireless-security.psk "$hotspotpasswd1"
+else
+        echo "Not updating local hotspot password..."
+fi
+
+echo "If you are not in range of the BU (802.1x) network, your robot will create a local hotspot called $HOSTNAME-hotspot"
+echo ""

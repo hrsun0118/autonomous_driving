@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Get wifi IP address using ifconfig and bash tools to cut just the address
+ipaddr=`/sbin/ifconfig  wlan0 | grep 'inet' | cut -d: -f2 | awk '{print $2}'`
+
+# Publish to dweet.io using hostname and ipaddr as message
+now=$(date  +"%D %T")
+wget --post-data="IP=${ipaddr} @ ${now}" "http://dweet.io/dweet/for/$HOSTNAME" -O /dev/null

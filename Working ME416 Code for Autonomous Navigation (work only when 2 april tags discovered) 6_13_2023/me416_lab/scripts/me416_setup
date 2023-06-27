@@ -1,0 +1,60 @@
+#!/bin/bash
+#Script to change the initial configuration and network settings
+cat << EOF
+Usage: $(basename "$0") <option>
+
+Options:
+"all" - go through all settings and reboot
+"password" - set the ubuntu user's password
+"name" - set the robot's name
+"wifi" - set the credentials for the BU Wifi
+"hotspotpass" -set the credentials for the local hotspot
+"reboot" - restart the pi
+NOTE: Only the first argument is processed.
+
+EOF
+
+# quit if no arguments
+if [ "$#" -eq 0 ]; then
+	exit
+fi
+
+# Change the pi password
+if [ "$1" = "password" ] || [ "$1" = "all" ]; then
+	echo "Change the password for the pi user (this has sudo access, do not share! Default: myhardpassword)"
+	echo "NOTE: password entry is hidden by default!"
+	passwd
+	echo ""
+fi
+
+#if [ "$1" = "vncpass" ] || [ "$1" = "all" ]; then
+	# Change VNC server passwd
+#	echo "Enter a password for the vnc server (you can use the same password as the ubuntu user)"
+#	vncpasswd
+#	echo ""
+#fi
+
+if [ "$1" = "name" ] || [ "$1" = "all" ]; then
+	#Choose a robot name (hostname, nomohead/dweet account)
+	me416_setup_hostname
+fi
+
+if [ "$1" = "wifi" ]; then
+	#Change BUWIFI
+	me416_setup_BUWIFI
+fi
+
+if [ "$1" = "hotspotpass" ] || [ "$1" = "all" ]; then
+	# Ask for local hotspot password
+	me416_setup_hotspotpass
+fi
+
+echo "Done! Your changes won't take effect until the system is rebooted."
+echo "To reboot use 'me416_setup' or 'sudo reboot'"
+
+# Done, reboot system
+if [ "$1" = "reboot" ] || [ "$1" = "all" ]; then
+	echo "Rebooting in 15 seconds...."
+	sleep 15
+	sudo reboot
+fi
