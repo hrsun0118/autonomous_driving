@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.5">
+  <!-- We use a custom world for the robot so that the camera angle is launched correctly -->
+  <world name="race-track-world">
+    
+    <!-- Add maze -->
+    <include>
+        <uri>model://30x30Maze</uri>
+        <pose> 1.5 -1.5 0 0 0 (3.1415926/2) </pose>
+    </include>
+
+    <!-- Add a ground plane -->
+    <include>
+        <uri>model://race_track</uri>
+    </include>
+    
+    <!-- Global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include> 
+    
+  
+    <!-- Set up the solver used for simulation -->  
+    <physics name="ode_70iters" type="ode">
+      <real_time_update_rate>1500</real_time_update_rate>
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>70</iters>
+        </solver>
+      </ode>
+    </physics>
+
+  </world>
+</sdf>
