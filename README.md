@@ -1,6 +1,6 @@
 # autonomous_driving
 
-* Build 2 packages:
+* Build 2 packages
   * Go to your own "ros_ws" folder
   * catkin build
 
