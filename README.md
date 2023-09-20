@@ -3,10 +3,19 @@
 
 # setup
 * Download the source code from this repo.
+* Run the code in a Linux based OS.
 * Build 2 packages:
   * Create your own "ros_ws" folder, and cd to this folder
   * catkin build
 
-* Launch 2 packages:
-  * roslaunch me416_environment me416_environment.launch
-  * roslaunch apriltag_ros continuous_detection_test.launch 
+# Execution
+* Launch the me416_environment world:
+  * Run in terminal: roslaunch me416_environment me416_environment.launch
+* Launch the camera recording:
+  * Run in terminal: rosrun rqt_image rqt_image
+  * Place the rover at a location where camera can see both images
+* Launch the continuous_detection script:
+  * roslaunch apriltag_ros continuous_detection_test.launch
+* Observe the rover behaviors:
+  * if the "2 apriltag (on 2 gateposts)" system is selected --> rover will drive towards the gate & stop right before the gate.
+  * if the "2 apriltag (on 3 gateposts)" system is selected --> rover will drive through the gate & stop right before the furtherest gate in the middle.
