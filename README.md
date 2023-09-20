@@ -1,4 +1,4 @@
-# Autonomous_driving 
+# Autonomous_driving: Bearing Only Visual Homing using 2-D Unicycle Model
 Author: Hairuo Sun
 
 Date: 6/27/2023
