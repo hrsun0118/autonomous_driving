@@ -8,7 +8,7 @@ PI: Roberto Tron
 ## Project Overview
 * This project utilizes the techinique of [Bearing-Only Visual Homing with Applications to a 2D Unicycle Model](https://drive.google.com/file/d/1WIOy5xXWTZDirO3twJEIU080zSkGeYzU/view?usp=share_link). The implementation of this method allow a 3D vehicle to traverse through an AR gate (with fiducial on all gateposts for gate localization) in a Gazebo simulation.
 
-## setup
+## Setup
 * Download the source code from this repo.
 * Run the code in a Linux based OS.
 * Build 2 packages:
