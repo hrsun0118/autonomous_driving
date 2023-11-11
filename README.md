@@ -17,7 +17,7 @@ The context of this project is to simulate a Mars rover autonomous traversal tas
 * 3D vehicle: respond to motor control for left/right turn with controlled speed.
 * Overall Result: A 3D vehicle is able to traverse through an AR gate (with fiducial on all gateposts for gate localization) in a Gazebo simulation.
 
-## Solution Design
+## Solution Design (TO BE ADDED SOON...)
 <div align="center">
 <img src="./images/solution_design.png">
 <p> SW Solution Design </p>
