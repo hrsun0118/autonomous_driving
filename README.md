@@ -1,26 +1,26 @@
 # Project: Autonomous Driving Simulation
-## Bearing Only Visual Homing using 2-D Unicycle Model
-Author: Hairuo Sun
-
-Date: 6/27/2023
-
+## Method: Bearing Only Visual Homing using 2-D Unicycle Model
 PI: Roberto Tron
+Author: Hairuo Sun
+Date: 11/11/2023
 
 ## Summary
-* This  utilizes the techinique of [Bearing-Only Visual Homing with Applications to a 2D Unicycle Model](https://drive.google.com/file/d/1WIOy5xXWTZDirO3twJEIU080zSkGeYzU/view?usp=share_link). The implementation of this method allow a 3D vehicle to traverse through an AR gate (with fiducial on all gateposts for gate localization) in a Gazebo simulation.
+The goal of this project is to create an autonomous driving simulation in Gazebo for a robot to: 1) drive autonomously on an unmarked terrain, and 2) drive through a simulated AR gate with fiducial tags solely based on camera image anlysis for localization. 
 
-## Summary
-[Project General Description - 2 - 3 sentences]
+The context of this project is to simulate a Mars rover autonomous traversal task on Mars when navigating the Mars Base Station.
+
+## Paper
+* [Bearing-Only Visual Homing with Applications to a 2D Unicycle Model](https://drive.google.com/file/d/1WIOy5xXWTZDirO3twJEIU080zSkGeYzU/view?usp=share_link)
 
 ### Project Deliverables/Functionalities
-* deliverable 1
-* deliverable 2
-* deliverable 3
+* Camera: Able to identify all Fiducials in the scene and record each gatepost's position.
+* 3D vehicle: respond to motor control for left/right turn with controlled speed.
+* Overall Result: A 3D vehicle is able to traverse through an AR gate (with fiducial on all gateposts for gate localization) in a Gazebo simulation.
 
 ## Solution Design
 <div align="center">
 <img src="./images/solution_design.png">
-<p> Solution Design (HW/SW) </p>
+<p> SW Solution Design </p>
 <br/>
 <br/>
 <br/>
@@ -63,33 +63,18 @@ PI: Roberto Tron
 * [squaternion](https://pypi.org/project/squaternion/)
 * [numpy](https://numpy.org/install/)
 
-## Other Sketches and photos (detailed design diagrams, setup images, terminal screen output, GUI page, etc)
-<div align="center">
-<img src="./images/pic1.png">
-<p> Pic 1</p>
-<br/>
-<br/>
-<br/>
-</div>
-<div align="center">
-<img src="./images/pic2.png">
-<p> Pic 2</p>
-<br/>
-<br/>
-<br/>
-</div>
+## Other Sketches and photos (detailed design diagrams, setup images, terminal screen output, etc)
+* TBD
 
-## References (includes any papers, datasheets, forum posts, tutorials, debug site links, articles used during the project completion process)
+## References (includes any papers, datasheets, forum posts, tutorials, debug site links, articles used during the project completion process, tutorials)
 ### Datasheets
+* [Flexible Layouts for Fiducial Tags (as reference)](https://drive.google.com/file/d/102KAxCEt4zkZZcp7ROOogLyKw8SXv0Te/view?usp=sharing)
 * [ROS Tutorials](http://wiki.ros.org/ROS/Tutorials)
-* [module 2](link)
-
-### tutorials/debug/articles
-* [tutorial 1](link)
-* [Stackoverflow debug question](link)
-* [Nordic forum post 1](link)
-
 
 ## Future Improvements:
-* Improvement 1
-* Improvement 2
+* For Simulation:
+ * Investigate some edge cases when the robot drive towards deadend of the tags.
+ * Create 3 surfaces for each gatepost to allow the robot camera see at least 2 tags at all times.
+* For a physical robot (in real life):
+ * Transfer the Simulation Code onto a physical ROSBot.
+ * Create a physical DEMO terrain to drive the robot autonomously. 
