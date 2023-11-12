@@ -19,6 +19,13 @@ The context of this project is to simulate a Mars rover autonomous traversal tas
 
 ## Solution Design (TO BE ADDED SOON...)
 <div align="center">
+<img src="./images/ros_diagram.png">
+<p> Diagram of Inter-Connected ROS Nodes/Topics </p>
+<br/>
+<br/>
+<br/>
+</div>
+<div align="center">
 <img src="./images/solution_design.png">
 <p> SW Solution Design </p>
 <br/>
